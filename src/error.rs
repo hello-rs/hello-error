@@ -9,9 +9,11 @@ pub enum CustomError {
     NumberGt200Error(usize),
     #[error("not found")]
     NotFoundError,
-    #[error("not found")]
+    #[error(transparent)]
     Network(NetworkError),
-    #[error("{0}")]
+    // transparent
+    // 将 source 和 display 方法直接转发到基础错误(io::Error),而不添加其他消息.
+    #[error(transparent)]
     IOError(#[from] std::io::Error),
 }
 

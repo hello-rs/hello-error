@@ -24,10 +24,10 @@ fn main() -> Result<()> {
     //     Ok(_) => (),
     //     Err(e) => println!("{}", e),
     // }
-    // match get_network_error() {
-    //     Ok(_) => (),
-    //     Err(e) => println!("{}", e),
-    // }
+    match get_network_error() {
+        Ok(_) => (),
+        Err(e) => println!("{}", e),
+    }
     let path = "a.txt".to_string();
     get_io_error(path.clone()).with_context(|| format!("找不到此文件,{}", path))?;
     Ok(())
